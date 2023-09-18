@@ -7,8 +7,9 @@ with open('ip-ranges.json', 'r') as file:
 
 
 # Function to check if a hostname is an AWS S3 hostname
-def is_s3_hostname(hostname):
-    return hostname.endswith('.s3.amazonaws.com')
+def contains_s3(hostname):
+    return 's3' in hostname or 'aws' in hostname
+
 
 
 # Read IP addresses from ipaddress.txt and perform DNS lookups
@@ -18,7 +19,7 @@ with open('ipaddress.txt', 'r') as ip_file:
 
         try:
             hostname, _, _ = socket.gethostbyaddr(ip_to_check)
-            is_s3 = is_s3_hostname(hostname)
+            is_s3 = contains_s3(hostname)
         except (socket.herror, socket.gaierror):
             is_s3 = False
 
