@@ -44,5 +44,3 @@ with open('ipaddress.txt', 'r') as ip_file:
 
         if is_s3:
             print(f'{ip_to_check} resolves to an AWS S3 hostname: {hostname}')
-        else:
-            print('')
