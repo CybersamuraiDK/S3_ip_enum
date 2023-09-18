@@ -4,7 +4,7 @@ import socket
 
 # Function to check if a hostname is an AWS S3 hostname
 def contains_s3(hostname):
-    return 's3' in hostname or 'aws' in hostname
+    return 's3' in hostname
 
 
 # Load the AWS IP ranges data from the JSON file
