@@ -1,0 +1,7 @@
+put your IP addresses in here
+
+example:
+192.0.0.1
+192.0.0.1
+192.0.0.1
+192.0.0.1
