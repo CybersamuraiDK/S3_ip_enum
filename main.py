@@ -4,7 +4,7 @@ import socket
 
 # Function to check if a hostname is an AWS S3 hostname
 def contains_s3(hostname):
-    return 's3' in hostname or 'aws' in hostname or 'amazonaws' in hostname
+    return 's3' in hostname or 'aws' in hostname
 
 
 # Load the AWS IP ranges data from the JSON file
@@ -18,6 +18,7 @@ for prefix in aws_ip_ranges['prefixes']:
     if region:
         unique_regions.add(region)
 
+
 # Function to check if a hostname contains any of the unique regions
 def contains_region(hostname, regions):
     # Split the hostname by dots to get its parts
@@ -30,7 +31,10 @@ def contains_region(hostname, regions):
 # Read IP addresses from ipaddress.txt and perform DNS lookups
 with open('ipaddress.txt', 'r') as ip_file:
     for line in ip_file:
-        ip_to_check = line.strip()  # Remove leading/trailing whitespace
+        line = line.strip()  # Remove leading/trailing whitespace
+        if not line:
+            continue  # Skip empty lines
+        ip_to_check = line
 
         try:
             hostname, _, _ = socket.gethostbyaddr(ip_to_check)
